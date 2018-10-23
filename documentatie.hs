@@ -25,3 +25,5 @@ data GameState = Pacman [Ghost] [Walls] [Food] [PowerUp] Lifes Score --updates c
 
 
 -- data Cursor as possible bonus for later
+
+--TEST TEST TEST
