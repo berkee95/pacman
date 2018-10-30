@@ -11,7 +11,7 @@ data Ghost = Point Algoritme KillAble Timer StandaardKleur --location of the gho
 --is it a killer or does it get killed by pacman, time left until it is alive again after being killed by pacman, colour of ghost
 data Pause = Running | Paused --To let the game run or paused by the user
 data Line = Line(Point,Point) --Startingpoint till endpoint of the line
-data Walls = Line --From which startingpoint to what endpoint there is a wall
+data Walls = Rectangle --Gewoon Rectangle Line --From which startingpoint to what endpoint there is a wall 
 -- (only straight lines are allowed so either x or y point should be the same of the 2 points)
 data Food = Point --Location of food
 data Score = Integer --Score of player (increase by time alive/food eaten/ghosts eaten)
