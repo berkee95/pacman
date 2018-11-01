@@ -23,14 +23,19 @@ view = return . drawWalls
 
 drawWalls :: GameState -> Picture
 drawWalls gstate = pictures wallShower
-                    where wallShower = map drawWall walls ++ [color yellow $ circleSolid 2]
-                    --walls = [Wall (-50,0) (-20, 100), Wall (20,0) (50,100)] 
+                    where wallShower = map drawWall walls ++ (color yellow $ rectangleWire 96 26) : (color yellow $ rectangleWire 100 30) : [(translate 0 14 $ color (red) $ rectangleSolid 20 5)]
+      --walls = [Wall (-75,-45) (20, -40), Wall (-80,-45) (-75,100), Wall (50,-45) (75, -40), Wall (75, -45) (80, 0)] 
+
    
 -- Vanaf linksonder van de wall ga je met de helft van de breedte en de helft van de hoogte het daadwerkelijke middelpunt
 drawWall :: Wall -> Picture
-drawWall wall@(Wall (x1, y1) (x2, y2)) |(x1 < 0)   = translate (x1 + afstandX/2) (y1 + afstandY/2) $ color blue $ rectangleSolid afstandX afstandY
-                                                      where afstandX = abs $ (abs x1) - (abs x2)
-                                                            afstandY = abs $ (abs y1) - (abs y2)
+drawWall (Wall (x1, y1) (x2, y2)) = translate (x1 + afstandX/2) (y1 + afstandY/2) $ color blue $ rectangleSolid afstandX afstandY
+                                    where afstandX |(x2 < 0)  = abs $ (abs x1) - (abs x2)
+                                                   |(x1 > 0)  = abs $ (abs x1) - (abs x2)
+                                                   |otherwise = abs $ (abs x1) + (abs x2)
+                                          afstandY |(y2 < 0)  = abs $ (abs y1) - (abs y2)
+                                                   |(y1 > 0)  = abs $ (abs y1) - (abs y2)
+                                                   |otherwise = abs $ (abs y1) + (abs y2)
 --            where wall@(Wall (x1, y1) (x2, y2)) = (Wall (0, 10) (0, 50))
 
 {-drawWall :: GameState -> Wall -> Picture
