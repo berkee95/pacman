@@ -1,0 +1,18 @@
+Installing executable gloss-counter in D:\Documenten\UU\Jaar 2\Eerste Semester\Functioneel Programmeren\PacManJo\.cabal-sandbox\bin
+
+
+<no location info>: warning: [-Wmissing-home-modules]
+    These modules are needed for compilation but not listed in your .cabal file's other-modules: Controller
+                                                                                                 Model
+                                                                                                 View
+[1 of 4] Compiling Model            ( src\Model.hs, dist\dist-sandbox-735a3004\build\gloss-counter\gloss-counter-tmp\Model.o )
+[2 of 4] Compiling Controller       ( src\Controller.hs, dist\dist-sandbox-735a3004\build\gloss-counter\gloss-counter-tmp\Controller.o )
+[3 of 4] Compiling View             ( src\View.hs, dist\dist-sandbox-735a3004\build\gloss-counter\gloss-counter-tmp\View.o )
+[4 of 4] Compiling Main             ( src\Main.hs, dist\dist-sandbox-735a3004\build\gloss-counter\gloss-counter-tmp\Main.o )
+
+<no location info>: warning: [-Wmissing-home-modules]
+    These modules are needed for compilation but not listed in your .cabal file's other-modules: Controller
+                                                                                                 Model
+                                                                                                 View
+Linking dist/dist-sandbox-735a3004\build\gloss-counter\gloss-counter.exe ...
+cabal: Leaving directory '.'

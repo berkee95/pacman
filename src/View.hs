@@ -19,11 +19,11 @@ import Graphics.Gloss.Data.Point
 
 
 view :: GameState -> IO Picture
-view = return . drawWalls
+view = return . drawview
 
-drawWalls :: GameState -> Picture
-drawWalls gstate = pictures wallShower
-                    where wallShower = map drawWall walls ++ (color yellow $ rectangleWire 96 26) : (color yellow $ rectangleWire 100 30) : [(translate 0 14 $ color (red) $ rectangleSolid 20 5)]
+drawview :: GameState -> Picture
+drawview gstate = pictures wallShower
+                    where wallShower = map drawWall walls ++ (color yellow $ rectangleWire 96 26) : (color yellow $ rectangleWire 100 30) : [(translate 0 14 $ color (red) $ rectangleSolid 20 5)] ++ map drawDot food
       --walls = [Wall (-75,-45) (20, -40), Wall (-80,-45) (-75,100), Wall (50,-45) (75, -40), Wall (75, -45) (80, 0)] 
 
    
@@ -37,6 +37,9 @@ drawWall (Wall (x1, y1) (x2, y2)) = translate (x1 + afstandX/2) (y1 + afstandY/2
                                                    |(y1 > 0)  = abs $ (abs y1) - (abs y2)
                                                    |otherwise = abs $ (abs y1) + (abs y2)
 --            where wall@(Wall (x1, y1) (x2, y2)) = (Wall (0, 10) (0, 50))
+
+drawDot :: Dot -> Picture
+drawDot (Dot (x,y) r) = translate x y $ color yellow $ circleSolid r
 
 {-drawWall :: GameState -> Wall -> Picture
 drawWall gstate (Wall (x1, y1) (x2, y2)) | (x1 == x2) = color blue $ rectangleSolid 5 (abs $ y1 - y2)
